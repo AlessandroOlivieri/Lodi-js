@@ -1,6 +1,11 @@
 
-/*Scritta da Alessandro Olivieri www.alessandro-olivieri.com */
-/*V 0.2.3*/
+/*****************************************************************************\
+ Javascript "Lodijs" library
+
+ @version: 0.2.3 - 30-10-2016
+ @author:  Alessandro Olivieri - http://www.alessandro-olivieri.com/
+
+ \*****************************************************************************/
 
 class Lodi_libreria {//inizio classe Lodi_libreria
 
