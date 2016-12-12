@@ -1,390 +1,489 @@
 
 /*****************************************************************************\
  Javascript "Lodijs" library
-
- @version: 0.2.3 - 30-10-2016
+ @version: 0.2.4 Pro - 12-12-2016
  @author:  Alessandro Olivieri - http://www.alessandro-olivieri.com/
-
  \*****************************************************************************/
 
-class Lodi_libreria {//inizio classe Lodi_libreria
 
-    construct(){
 
+
+function lodi_libreria(elemento) {//inizio lodi_libreria
+
+    if(elemento != null && elemento != "undefined"){
+        this.selezionato = document.querySelector(elemento);
+    }else{
+        this.selezionato = null;
     }
 
 
-    pronto(fn) {
-        if (document.readyState != 'loading'){
-            fn();
+}//fine metodo value
+
+
+lodi_libreria.prototype.pronto = function (funzione) {//inizio funzione pronto
+
+    if (document.readyState != 'loading'){
+        funzione();
+    } else {
+        document.addEventListener('DOMContentLoaded', funzione);
+    }
+
+
+}//fine funzione pronto
+
+
+
+lodi_libreria.prototype.click = function(funzione) {//inizio funzione click
+
+    if(this.selezionato != null){
+        this.selezionato.addEventListener("click",funzione);
+    }else{
+        return false;
+    }
+
+}//fine funzione click
+
+
+lodi_libreria.prototype.valore = function (valore) {//inizio funzione valore
+
+    if(this.selezionato != null) {
+
+        if (valore != null && valore != "undefined") {
+            this.selezionato.value = valore;
         } else {
-            document.addEventListener('DOMContentLoaded', fn);
+            return this.selezionato.value;
         }
 
-    }//fine pronto
+    }else{
+        return false;
+    }
+}//fine funzione valore
 
 
-    /*PRIMO ARGOMENTO ID ELEMENTO , SECONDO ELEMENTO CODICE HTML DA AGGIUNGERE EQUIVALE A APPEND DI JQUERY */
-    appendi(id,html){
+
+lodi_libreria.prototype.svuota_valore = function () {//inizio funzione svuota_valore
+
+    if(this.selezionato != null) {
+
+        this.selezionato.value = "";
+
+    }else{
+        return false;
+    }
 
 
-        if(id.length > 0 && html.length > 0) {
+}//fine funzione svuota_valore
 
-            document.getElementById(id).innerHTML += html;
+
+
+lodi_libreria.prototype.appendi = function (html) {//inizio funzione appendi
+
+    if(this.selezionato != null) {
+
+        if(html.length > 0) {
+
+            this.selezionato.innerHTML += html;
+            return true;
         }else{
             return false;
         }
+
+    }else{
+        return false;
+    }
+
+
+}//fine funzione appendi
+
+
+lodi_libreria.prototype.rimuovi = function () {//inizio funzione rimuovi
+
+    if(this.selezionato != null) {
+
+        this.selezionato.remove();
         return true;
 
-    }//fine metodo appendi
+    }else{
+        return false;
+    }
 
 
-    /*ARGOMENTO ID , ELIMINA ELEMENTO */
-    rimuovi(id){
-        if(id.length > 0 ){
-            document.getElementById(id).remove();
+}//fine funzione rimuovi
+
+
+
+lodi_libreria.prototype.svuota = function () {//inizio funzione svuota
+
+
+    if(this.selezionato != null) {
+
+        this.selezionato.innerHTML = "";
+        return true;
+
+    }else{
+        return false;
+    }
+
+
+}//fine funzione svuota
+
+
+lodi_libreria.prototype.dblclick = function(funzione) {//inizio funzione click
+
+    if(this.selezionato != null){
+        this.selezionato.addEventListener("dblclick",funzione);
+    }else{
+        return false;
+    }
+
+}//fine funzione click
+
+
+
+lodi_libreria.prototype.rightclick = function(funzione) {//inizio funzione rightclick
+
+    if(this.selezionato != null){
+        this.selezionato.addEventListener("mousedown",function (event) {
+            if(event.which == 3) {
+                funzione();
+            }else{
+                return false;
+            }
+        });
+
+    }else{
+        return false;
+    }
+
+}//fine funzione rightclick
+
+
+
+lodi_libreria.prototype.centroclick = function(funzione) {//inizio funzione centroclick
+
+    if(this.selezionato != null){
+        this.selezionato.addEventListener("mousedown",function (event) {
+            if(event.which == 2) {
+                funzione();
+            }else{
+                return false;
+            }
+        });
+
+    }else{
+        return false;
+    }
+
+}//fine funzione centroclick
+
+
+lodi_libreria.prototype.add_class = function (classe) {//inizio funzione add_class
+
+    if(this.selezionato != null) {
+
+        if(classe.length > 0  ) {
+            this.selezionato.className = classe;
+            return true;
         }else{
             return false;
         }
+
+    }else{
+        return false;
+    }
+
+
+}//fine funzione add_class
+
+
+
+lodi_libreria.prototype.del_class = function () {//inizio funzione del_class
+
+    if(this.selezionato != null) {
+
+        this.selezionato.className = "";
         return true;
 
-    }//fine metodo rimuovi
+    }else{
+        return false;
+    }
+
+}//fine funzione del_class
 
 
 
-    /*ARGOMENTO ID ELEMENTO ,SVUOTA ELEMENTO , EQUIVALE A EMPTY DI JQUERY */
-    svuota(id){
+lodi_libreria.prototype.minuscolo = function (stringa) {//inizio funzione minuscolo
 
-        if(id.length > 0 ){
-            document.getElementById(id).innerHTML = "";
-        }else{
-            return false;
-        }
-        return true;
-    }//fine metodo svuota
+    if(stringa.length > 0){
 
-
-    /*ARGOMENTO : ID ELEMENTO , ELIMINA IL CODICE VALUE  DELL'ELEMENTO , EQUIVALE A EMPTY VALORE DI JQUERY */
-    svuota_valore(id){
-        if(id.length > 0 ) {
-            //   document.getElementById(id).innerHTML = null;
-            document.querySelector(id).value = "";
-        }else{
-            return false;
-        }
-        return true;
-
-    }//fine classe svuota
-
-    /*ARGOMENTO :ID ELEMENTO , SECONDO ARGOMENTO FUNZIONE CALLBACK , CLICK ELEMENTO EQUIVALE AL CLICK DI JQUERY*/
-    click(id,funzione){
-        if(id.length > 0 ) {
-            document.getElementById(id).addEventListener("click", funzione);
-           // document.querySelector(id).addEventListener("click", funzione); //prendi elementi come css
-        }else{
-            return false;
-        }
-        return true;
-
-    }//fine metodo click
-
-
-
-    /*ARGOMENTO :ID ELEMENTO , SECONDO ARGOMENTO FUNZIONE CALLBACK , DBCLICK ELEMENTO EQUIVALE AL DBCLICK DI JQUERY*/
-    dblclick(id,funzione){
-        if(id.length > 0 ) {
-            document.getElementById(id).addEventListener("dblclick", funzione);
-        }else{
-            return false;
-        }
-        return true;
-
-    }//fine metodo click
-
-
-    /*INIZIO BOTTONE DESTRO , PRIMO PARAMETRO ID , SECONDO PARAMETRO FUNZIONE CALLBACK*/
-    rightclick(id,funzione){
-        if(id.length > 0){
-            document.getElementById("bottone1").addEventListener("mousedown",function (event) {
-                if(event.which == 3) {
-                    funzione();
-                }else{
-                    return false;
-                }
-            });
-
-        }else {
-            return false;
-        }
-    }//fine bottone right
-
-
-    /*INIZIO CENTRO CLICK , 1 PARAMETRO = ID , SECONDO PARAMETRO FUNZIONE DI CALLBACK*/
-    centroclick(id,funzione){
-        if(id.length > 0){
-            document.getElementById("bottone1").addEventListener("mousedown",function (event) {
-                if(event.which == 2) {
-                    funzione();
-                }else{
-                    return false;
-                }
-            });
-
-        }else {
-            return false;
-        }
-    }//fine bottone right
-
-
-
-    /*ARGOMENTO : ID ELEMENTO , SECONDO ARGOMENTO : NOME CLASSE , AGGIUNGE LA CLASSE COL NOME PASSATO COME SECONDO ARGOMENTO*/
-    add_class(id,classe){
-        if(id.length > 0 && classe.length > 0  ) {
-            document.getElementById(id).className = classe;
-        }else{
-            return false;
-        }
-        return true;
-
-    }//fine classe add_class
-
-
-    /*ARGOMENTO ID ELEMENTO , RIMUOVE CLASSE*/
-    del_class(id){
-        if(id.length > 0) {
-            document.getElementById(id).className = "";
-        }else{
-            return false;
-        }
-        return true;
-    }//fine classe del_class
-
-
-    /*ARGOMENTO STRINGA , RITORNA STRINGA  PASSATA IN ARGOMENTO IN MINUSCOLO*/
-    minuscolo(stringa){
         var ritorno = stringa.toLowerCase();
         return ritorno;
-    }//fine metodo minuscolo
 
-
-
-    /*ARGOMENTO STRINGA , RITORNA STRINGA PASSATA IN ARGOMENTO IN MAIUSCOLO*/
-    maiuscolo(stringa){
-        if(stringa.length > 0) {
-            var ritorno = stringa.toUpperCase();
-            return ritorno;
-        }else{
-            return false
-        }
-    }//fine metodo maiuscolo
-
-
-    /*RITORNA DATA ODIERNA NEL FORMATO ITALIANO */
-    data_odierna(){
-        var data = new Date();
-        var giorno = data.getDate();
-        var mese = data.getMonth()+1;//gennaio ÃƒÂ¨ 0
-        var anno = data.getFullYear();
-
-        var data_oggi = giorno + "/" + mese + "/" + anno;
-
-        return data_oggi;
-    }//fine data_odierna
-
-
-    /*PARAMENTRO ID ELEMENTO NASCONDO ELEMENTO , EQUIVALE A HIDE DI JQUERY*/
-    nascondi(id){
-        //   if(id.length > 0){
-
-        document.getElementById(id).style.display = 'none';
-        //  }else{
+    }else{
         return false;
-        //   }
-        //   return true;
-
-    }//fine metodo nascondi
+    }
 
 
-    /*PARAMETRO ID ELEMENTO MOSTRA ELEMENTO , EQUIVALE A SHOW DI JQUERY*/
-    mostra(id){
-        if(id.length > 0){
-
-            document.getElementById(id).style.display = '';
-        }else{
-            return false
-        }
-    }//fine metodo mostra
+}//fine funzione minuscolo
 
 
-    /*PARAMETRO ID ELEMENTO , SECONDO PARAMETRO STRINGA , INSERISCE PRIMA DELL'ELEMENTO LA STRINGA PASSATA COME PARAMETRO*/
-    appendi_prima(id,stringa){
-        if(id.length > 0 && stringa.length > 0){
+lodi_libreria.prototype.maiuscolo = function (stringa) {//inizio funzione maiuscolo
 
-            document.getElementById(id).insertAdjacentHTML("beforebegin",stringa);
+    if(stringa.length > 0) {
+        var ritorno = stringa.toUpperCase();
+        return ritorno;
+    }else{
+        return false
+    }
 
-        }else{
-            return false;
-        }
+}//fine funzione maiuscolo
 
+
+lodi_libreria.prototype.data_odierna = function () {//inizio funzione data_odierna
+
+    var data = new Date();
+    var giorno = data.getDate();
+    var mese = data.getMonth()+1;
+    var anno = data.getFullYear();
+
+    var data_oggi = giorno + "/" + mese + "/" + anno;
+
+    return data_oggi;
+
+}//fine funzione data_odierna
+
+
+lodi_libreria.prototype.nascondi = function () {//inizio funzione nascondi
+
+    if(this.selezionato != null) {
+
+        this.selezionato.style.display = "none";
         return true;
 
-
-    }//fine metodo appendi prima
-
-
-    /*PARAMETRO ID ELEMENTO , SECONDO PARAMETRO STRINGA , INSERISCE DOPO L'ELEMENTO LA STRINGA PASSATA COME PARAMETRO*/
-    appendi_dopo(id,stringa){
-        if(id.length > 0 && stringa.length > 0){
-            document.getElementById(id).insertAdjacentHTML("afterend",stringa);
-        }else{
-            return false;
-        }
-        return true;
-
-    }//fine metodo appendi dopo
+    }else{
+        return false;
+    }
 
 
-    /*PARAMETRO ID ELEMENTO , CLONA L'ELEMENTO , EQUIVALE ALLA FUNZIONE CLONE DI JQUERY*/
-    clone(id){
-
-        if(id.length > 0) {
-            document.getElementById(id).cloneNode(true);
-        }else{
-            return false;
-        }
-        return true;
+}//fine funzione nascondi
 
 
-    }//fine metodo clone
+
+lodi_libreria.prototype.mostra = function () {//inizio funzione mostra
+
+    if(this.selezionato != null) {
+
+        this.selezionato.style.display = "";
+
+    }else{
+        return false;
+    }
 
 
-    /*PARAMETRO ID ELEMENTO , SECONDO PARAMETRO ATTRIBUTO , AGGIUNGE ATTRIBUTO ALL'ELEMENTO , EQUIVALE A ATTR DI JQUERY*/
-    attr(id,attributo){
-        if(id.length > 0 && attributo.length > 0){
-            document.getElementById(id).getAttribute(attributo);
-        }else{
-            return false;
-        }
-        return true;
-
-    }//fine metodo attr
-
-    /*PARAMETRO ID ELEMENTO , SECONDO PARAMETRO TESTO , AGGIUNGE TESTO NORMALE ALL'ELEMENTO , EQUIVALE A TEXT DI JQUERY*/
-    testo(id,testo){
-        if(id.length > 0 && testo > 0){
-            document.getElementById(id).textContent(testo);
-        }else{
-            return false;
-        }
-        return true;
-    }//fine metodo testo
+}//fine funzione mostra
 
 
-    /*PARAMETRO ID ELEMENTO , SECONDO PARAMETRO STRINGA DA RIMPIAZZARE , EQUIVALE A REPLACEWITH DI JQUERY*/
-    rimpiazza(id,stringa){
-        if(id.length > 0){
+lodi_libreria.prototype.appendi_prima = function (stringa) {//inizio funzione appendi_prima
 
-            document.getElementById(id).outerHTML = stringa;
+    if(this.selezionato != null) {
 
+        if(stringa.length > 0){
 
-        }else{
-            return false;
-        }
-
-        return true;
-    }//fine metodo rimpiazza
-
-
-    /*PARAMETRO ID ELEMENTO , RITORNA VALORE ELEMENTO EQUIVALE A VALUE DI JQUERY*/
-    valore(id,valore){
-
-        if(id.length > 0 && valore == null){
-
-            //var valore =  document.getElementById(id).value;
-            var valore =  document.querySelector(id).value;
-            return valore;
-
-        }
-        else if(id.length > 0 && valore.length > 0){
-           // document.getElementById(id).value = valore;
-            document.querySelector(id).value = valore;
+            this.selezionato.insertAdjacentHTML("beforebegin",stringa);
             return true;
-        }
-        else {
-            return false;
-        }
-    }//fine metodo value
-
-
-    /*ARGOMENTO ESPRESSIONE DA RISOLVERE , RITORNA RISULTATO ESPRESSIONE*/
-    operazioni(valore){
-        if(valore.length > 0) {
-            var risultato = eval(valore);
-            return risultato;
         }else{
             return false;
         }
-    }//fine metodo operazioni
+
+    }else{
+        return false;
+    }
+
+}//fine funzione appendi_prima
 
 
-    //PRIMO PARAMETRO ID ELEMENTO , SECONDO PARAMETRO FUNZIONE DI CALLBACK
-    mouseover(id,funzione){
+lodi_libreria.prototype.appendi_dopo = function (stringa) {//inizio funzione appendi_dopo
 
-        var variabile = document.getElementById(id);
-            variabile.addEventListener("mouseover",funzione,false);
-    }//fine metodo mouseover
+    if(this.selezionato != null) {
 
+        if(stringa.length > 0){
 
-    /*PRIMO PARAMETRO ID ELEMENTO , SECONDO PARAMETRO FUNZIONE DI CALLBACK*/
-    mouseout(id,funzione){
+            this.selezionato.insertAdjacentHTML("afterend",stringa);
+            return true;
+        }else{
+            return false;
+        }
 
-        var variabile = document.getElementById(id);
-            variabile.addEventListener("mouseout",funzione,false);
-
-    }//fine metodo mouseout
-
-
-    //PRIMO PARAMETRO SECONDI FUNZIONE , SECONDO PARAMETRO FUNZIONE DI CALLBACK
-    secondi(secondi,funzione){
-
-        secondi = secondi+"000";
-
-        setTimeout(funzione,secondi);
+    }else{
+        return false;
+    }
 
 
-    }//fine metodo secondi
+}//fine funzione appendi_dopo
 
 
-    //PRIMO PARAMETRO NUMERO DI VOLTE IN CUI IL CICLO DEVE GIRARE , SECONDO PARAMETRO SECONDI DI ESECUZIONE PER OGNI RIPETIZIONE
-    //TERZO PARAMETRO FUNZIONE DA ESEGUIRE N VOLTE
-    cicloIntervallo(Nciclo,secondi,funzione){
+lodi_libreria.prototype.clone = function () {//inizio funzione clone
 
-        secondi = secondi + "000";
+    if(this.selezionato != null) {
 
-        var ciclo = 0;
+        return this.selezionato.cloneNode(true);
 
-        var clock = setInterval(function () {
-            funzione();
-            ciclo++;
-
-            if(ciclo == Nciclo){
-                clearInterval(clock);
-            }
-
-        },secondi);
+    }else{
+        return false;
+    }
 
 
-
-    }//fine metodo cicloIntervallo
-
+}//fine funzione clone
 
 
+lodi_libreria.prototype.attr = function (attributo) {//inizio funzione attr
+
+    if(this.selezionato != null){
+
+        if(attributo.length > 0){
+
+            this.selezionato.getAttribute(attributo);
+            return true;
+
+        }else{
+            return false;
+        }
+
+    }else{
+
+        return false;
+    }
 
 
-}//fine classe Lodi_libreria
+}//fine funzione attr
+
+
+
+lodi_libreria.prototype.testo = function (testo) {//inizio funzuione testo
+
+    if(this.selezionato != null){
+
+        if(testo.length > 0 ){
+
+            this.selezionato.textContent(testo);
+
+        }else{
+            return false;
+        }
+
+    }else{
+        return false;
+    }
+
+
+}//fine funzione testo
+
+
+lodi_libreria.prototype.rimpiazza = function (stringa) {//inizio funzione rimpiazza
+
+    if(this.selezionato > 0){
+
+        if(stringa.length > 0){
+
+            this.selezionato.outerHTML = stringa;
+
+        }else{
+            return false;
+        }
+
+
+    }else{
+        return false;
+    }
+
+
+
+}//fine funzione rimpiazza
+
+
+lodi_libreria.prototype.operazioni = function (valore) {//inizio funzione operazioni
+
+    if(valore.length > 0){
+
+        var risultato = eval(valore);
+        return risultato;
+
+    }else{
+        return false;
+    }
+
+
+}//fine funzione operazioni
+
+
+lodi_libreria.prototype.mouseover = function (funzione) {//inizio funzione mouseover
+
+    if(this.selezionato != null){
+
+        this.selezionato.addEventListener("mouseover",funzione,false);
+
+    }else{
+        return false;
+    }
+
+
+
+}//fine funzione mouseover
+
+
+lodi_libreria.prototype.mouseout = function (funzione) {//inizio funzione mouseout
+
+    if(this.selezionato != null){
+
+        this.selezionato.addEventListener("mouseout",funzione,false);
+
+    }else{
+        return false;
+    }
+
+
+}//fine funzione mouseout
+
+
+lodi_libreria.prototype.secondi = function (secondi,funzione) {//inizio funzione secondi
+
+    secondi = secondi + "000";
+
+    setTimeout(funzione,secondi);
+
+
+}//fine funzione secondi
+
+
+lodi_libreria.prototype.cicloIntervallo = function (Nciclo,secondi,funzione) {//inizio funzione cicloIntervallo
+
+    secondi = secondi + "000";
+
+    var ciclo = 0;
+
+    var clock = setInterval(function () {
+        funzione();
+        ciclo++;
+
+        if(ciclo == Nciclo){
+            clearInterval(clock);
+        }
+
+    },secondi)
+
+
+}//fine funzione cicloIntervallo
+
+
+
+
+
+
+
+
 
 /*METODO POST , PRIMO PARAMETRO URL SERVER , SECONDO PARAMETRO OPZIONALE DATI RICHIESTA*/
-Lodi_libreria.prototype.post = function (url,data){
+lodi_libreria.prototype.post = function (url,data){
     return new Promise(function (succed,fail) {
         var req = new XMLHttpRequest();
         req.open("POST",url,true);
@@ -414,11 +513,13 @@ Lodi_libreria.prototype.post = function (url,data){
 
 }//fine post | esempio utilizzo : post("server.php",{nome:nome,cognome:cognome}).then(function (testo) {
 //alert(testo);
-//});
+
+
+
 
 
 /*METODO GET , PRIMO PARAMETRO URL SERVER , SECONDO PARAMETRO OPZIONALE DATI RICHIESTA*/
-Lodi_libreria.prototype.get = function (url,data) {
+lodi_libreria.prototype.get = function (url,data) {
     return new Promise(function (succed,fail) {
         if(data != null) {
             parametri = "";
@@ -447,4 +548,12 @@ Lodi_libreria.prototype.get = function (url,data) {
 };
 
 
-lodi = new Lodi_libreria();
+
+
+
+/***************** INSTANZA LODI *****************/
+
+var lodi = function lodi(parametro) {//inizio instanza lodi
+    var oggetto = new lodi_libreria(parametro);
+    return oggetto;
+}//fine instanza lodi
