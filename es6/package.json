@@ -1,0 +1,21 @@
+{
+  "name": "lodijs",
+  "description": "Library for dom manipulation",
+  "main": "Lodijs.js",
+  "keywords": [
+    "dom",
+    "Lodijs",
+    "dom manipulation",
+    "es6"
+  ],
+  "author": "Alessandro Olivieri www.alessandro-olivieri.com olivieri@alessandro-olivieri.com",
+  "license": "BSD-2-Clause",
+  "version": "0.2.5",
+  "scripts": {
+    "test": "Lodijs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlessandroOlivieri/Lodi-js/tree/master/es6"
+  }
+}
