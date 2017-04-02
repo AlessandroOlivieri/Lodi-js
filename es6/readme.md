@@ -1,6 +1,8 @@
 
 Lodijs library for dom manipulation
 
+install : npm install lodijs 
+
 example :
 
 
