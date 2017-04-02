@@ -1,7 +1,7 @@
 
 /*****************************************************************************\
  Javascript "Lodijs" library
- @version: 0.2.8 02-04-2017
+ @version: 0.2.9 02-04-2017
  @author:  Alessandro Olivieri - http://www.alessandro-olivieri.com/
  \*****************************************************************************/
 class Lodijs {//inizio classe Lodijs

@@ -1,3 +1,6 @@
+
+Lodijs library for dom manipulation
+
 example :
 
 

@@ -12,7 +12,7 @@
   ],
   "author": "Alessandro Olivieri www.alessandro-olivieri.com olivieri@alessandro-olivieri.com",
   "license": "BSD-2-Clause",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "scripts": {
     "test": "Lodijs"
   },
