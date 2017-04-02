@@ -1,10 +1,10 @@
 
 /*****************************************************************************\
  Javascript "Lodijs" library
- @version: 0.2.5 15-02-2017
+ @version: 0.2.6 02-04-2017
  @author:  Alessandro Olivieri - http://www.alessandro-olivieri.com/
  \*****************************************************************************/
-class Lodi_libreria {//inizio classe Lodi_libreria
+class Lodijs {//inizio classe Lodijs
 
     construct(){
 
@@ -381,7 +381,7 @@ class Lodi_libreria {//inizio classe Lodi_libreria
 }//fine classe Lodi_libreria
 
 /*METODO POST , PRIMO PARAMETRO URL SERVER , SECONDO PARAMETRO OPZIONALE DATI RICHIESTA*/
-Lodi_libreria.prototype.post = function (url,data){
+Lodijs.prototype.post = function (url,data){
     return new Promise(function (succed,fail) {
         var req = new XMLHttpRequest();
         req.open("POST",url,true);
@@ -417,7 +417,7 @@ Lodi_libreria.prototype.post = function (url,data){
 
 
 /*METODO GET , PRIMO PARAMETRO URL SERVER , SECONDO PARAMETRO OPZIONALE DATI RICHIESTA*/
-Lodi_libreria.prototype.get = function (url,data) {
+Lodijs.prototype.get = function (url,data) {
     return new Promise(function (succed,fail) {
         if(data != null) {
             parametri = "";
@@ -446,4 +446,4 @@ Lodi_libreria.prototype.get = function (url,data) {
 };
 
 
-lodi = new Lodi_libreria();
+

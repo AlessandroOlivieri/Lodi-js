@@ -6,11 +6,13 @@
     "dom",
     "Lodijs",
     "dom manipulation",
-    "es6"
+    "es6",
+    "library js",
+    "library es6 dom"
   ],
   "author": "Alessandro Olivieri www.alessandro-olivieri.com olivieri@alessandro-olivieri.com",
   "license": "BSD-2-Clause",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "scripts": {
     "test": "Lodijs"
   },

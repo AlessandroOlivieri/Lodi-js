@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lodijs</title>
+    <script src="Lodi.js"></script>
+</head>
+<body>
+
+<style>
+    .colore {
+        background: red;
+        color:yellow;
+    }
+</style>
+
+<div id="div_nascosto">
+    <h2 id="testo">Ciao mondo da lodijs</h2>
+    <p>libreria per la manipolazione del dom</p>
+
+</div>
+
+
+<button id="nascondi">Nascondi</button>
+<button id="mostra">Mostra</button>
+
+
+
+
+<script>
+
+    var lodijs = new Lodijs();
+
+    lodijs.pronto(function () {//inzio documento pronto
+
+        lodijs.nascondi('mostra');
+
+
+        lodijs.click('nascondi',function () {
+
+            lodijs.del_class('testo');
+            lodijs.nascondi('div_nascosto');
+            lodijs.mostra('mostra');
+            lodijs.nascondi('nascondi');
+
+        });
+
+        lodijs.click('mostra',function () {
+
+            lodijs.mostra('div_nascosto');
+            lodijs.mostra('nascondi');
+            lodijs.nascondi('mostra');
+
+        });
+
+        lodijs.click('testo',function () {
+            lodijs.add_class('testo','colore');
+        });
+
+
+    });//fine documento pronto
+
+</script>
+
+</body>
+</html>
