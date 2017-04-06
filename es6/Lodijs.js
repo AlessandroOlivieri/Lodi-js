@@ -1,7 +1,7 @@
 
 /*****************************************************************************\
  Javascript "Lodijs" library
- @version: 0.2.9 02-04-2017
+ @version: 0.3.0 06-04-2017
  @author:  Alessandro Olivieri - http://www.alessandro-olivieri.com/
  \*****************************************************************************/
 class Lodijs {//inizio classe Lodijs
@@ -21,13 +21,13 @@ class Lodijs {//inizio classe Lodijs
     }//fine pronto
 
 
-    /*PRIMO ARGOMENTO ID ELEMENTO , SECONDO ELEMENTO CODICE HTML DA AGGIUNGERE EQUIVALE A APPEND DI JQUERY */
-    appendi(id,html){
+    /*PRIMO ARGOMENTO elemento ELEMENTO , SECONDO ELEMENTO CODICE HTML DA AGGIUNGERE EQUIVALE A APPEND DI JQUERY */
+    appendi(elemento,html){
 
 
-        if(id.length > 0 && html.length > 0) {
+        if(elemento.length > 0 && html.length > 0) {
 
-            document.getElementById(id).innerHTML += html;
+            document.querySelector(elemento).innerHTML += html;
         }else{
             return false;
         }
@@ -36,10 +36,10 @@ class Lodijs {//inizio classe Lodijs
     }//fine metodo appendi
 
 
-    /*ARGOMENTO ID , ELIMINA ELEMENTO */
-    rimuovi(id){
-        if(id.length > 0 ){
-            document.getElementById(id).remove();
+    /*ARGOMENTO elemento , ELIMINA ELEMENTO */
+    rimuovi(elemento){
+        if(elemento.length > 0 ){
+            document.querySelector(elemento).remove();
         }else{
             return false;
         }
@@ -49,11 +49,11 @@ class Lodijs {//inizio classe Lodijs
 
 
 
-    /*ARGOMENTO ID ELEMENTO ,SVUOTA ELEMENTO , EQUIVALE A EMPTY DI JQUERY */
-    svuota(id){
+    /*ARGOMENTO elemento ELEMENTO ,SVUOTA ELEMENTO , EQUIVALE A EMPTY DI JQUERY */
+    svuota(elemento){
 
-        if(id.length > 0 ){
-            document.getElementById(id).innerHTML = "";
+        if(elemento.length > 0 ){
+            document.querySelector(elemento).innerHTML = "";
         }else{
             return false;
         }
@@ -61,11 +61,11 @@ class Lodijs {//inizio classe Lodijs
     }//fine metodo svuota
 
 
-    /*ARGOMENTO : ID ELEMENTO , ELIMINA IL CODICE VALUE  DELL'ELEMENTO , EQUIVALE A EMPTY VALORE DI JQUERY */
-    svuota_valore(id){
-        if(id.length > 0 ) {
-            //   document.getElementById(id).innerHTML = null;
-            document.querySelector(id).value = "";
+    /*ARGOMENTO : elemento ELEMENTO , ELIMINA IL CODICE VALUE  DELL'ELEMENTO , EQUIVALE A EMPTY VALORE DI JQUERY */
+    svuota_valore(elemento){
+        if(elemento.length > 0 ) {
+            //   document.querySelector(elemento).innerHTML = null;
+            document.querySelector(elemento).value = "";
         }else{
             return false;
         }
@@ -73,11 +73,11 @@ class Lodijs {//inizio classe Lodijs
 
     }//fine classe svuota
 
-    /*ARGOMENTO :ID ELEMENTO , SECONDO ARGOMENTO FUNZIONE CALLBACK , CLICK ELEMENTO EQUIVALE AL CLICK DI JQUERY*/
-    click(id,funzione){
-        if(id.length > 0 ) {
-            document.getElementById(id).addEventListener("click", funzione);
-           // document.querySelector(id).addEventListener("click", funzione); //prendi elementi come css
+    /*ARGOMENTO :elemento ELEMENTO , SECONDO ARGOMENTO FUNZIONE CALLBACK , CLICK ELEMENTO EQUIVALE AL CLICK DI JQUERY*/
+    click(elemento,funzione){
+        if(elemento.length > 0 ) {
+            document.querySelector(elemento).addEventListener("click", funzione);
+            // document.querySelector(elemento).addEventListener("click", funzione); //prendi elementi come css
         }else{
             return false;
         }
@@ -87,10 +87,10 @@ class Lodijs {//inizio classe Lodijs
 
 
 
-    /*ARGOMENTO :ID ELEMENTO , SECONDO ARGOMENTO FUNZIONE CALLBACK , DBCLICK ELEMENTO EQUIVALE AL DBCLICK DI JQUERY*/
-    dblclick(id,funzione){
-        if(id.length > 0 ) {
-            document.getElementById(id).addEventListener("dblclick", funzione);
+    /*ARGOMENTO :elemento ELEMENTO , SECONDO ARGOMENTO FUNZIONE CALLBACK , DBCLICK ELEMENTO EQUIVALE AL DBCLICK DI JQUERY*/
+    dblclick(elemento,funzione){
+        if(elemento.length > 0 ) {
+            document.querySelector(elemento).addEventListener("dblclick", funzione);
         }else{
             return false;
         }
@@ -99,10 +99,10 @@ class Lodijs {//inizio classe Lodijs
     }//fine metodo click
 
 
-    /*INIZIO BOTTONE DESTRO , PRIMO PARAMETRO ID , SECONDO PARAMETRO FUNZIONE CALLBACK*/
-    rightclick(id,funzione){
-        if(id.length > 0){
-            document.getElementById("bottone1").addEventListener("mousedown",function (event) {
+    /*INIZIO BOTTONE DESTRO , PRIMO PARAMETRO elemento , SECONDO PARAMETRO FUNZIONE CALLBACK*/
+    rightclick(elemento,funzione){
+        if(elemento.length > 0){
+            document.querySelector("bottone1").addEventListener("mousedown",function (event) {
                 if(event.which == 3) {
                     funzione();
                 }else{
@@ -116,10 +116,10 @@ class Lodijs {//inizio classe Lodijs
     }//fine bottone right
 
 
-    /*INIZIO CENTRO CLICK , 1 PARAMETRO = ID , SECONDO PARAMETRO FUNZIONE DI CALLBACK*/
-    centroclick(id,funzione){
-        if(id.length > 0){
-            document.getElementById("bottone1").addEventListener("mousedown",function (event) {
+    /*INIZIO CENTRO CLICK , 1 PARAMETRO = elemento , SECONDO PARAMETRO FUNZIONE DI CALLBACK*/
+    centroclick(elemento,funzione){
+        if(elemento.length > 0){
+            document.querySelector("bottone1").addEventListener("mousedown",function (event) {
                 if(event.which == 2) {
                     funzione();
                 }else{
@@ -134,10 +134,10 @@ class Lodijs {//inizio classe Lodijs
 
 
 
-    /*ARGOMENTO : ID ELEMENTO , SECONDO ARGOMENTO : NOME CLASSE , AGGIUNGE LA CLASSE COL NOME PASSATO COME SECONDO ARGOMENTO*/
-    add_class(id,classe){
-        if(id.length > 0 && classe.length > 0  ) {
-            document.getElementById(id).className = classe;
+    /*ARGOMENTO : elemento ELEMENTO , SECONDO ARGOMENTO : NOME CLASSE , AGGIUNGE LA CLASSE COL NOME PASSATO COME SECONDO ARGOMENTO*/
+    add_class(elemento,classe){
+        if(elemento.length > 0 && classe.length > 0  ) {
+            document.querySelector(elemento).className = classe;
         }else{
             return false;
         }
@@ -146,10 +146,10 @@ class Lodijs {//inizio classe Lodijs
     }//fine classe add_class
 
 
-    /*ARGOMENTO ID ELEMENTO , RIMUOVE CLASSE*/
-    del_class(id){
-        if(id.length > 0) {
-            document.getElementById(id).className = "";
+    /*ARGOMENTO elemento ELEMENTO , RIMUOVE CLASSE*/
+    del_class(elemento){
+        if(elemento.length > 0) {
+            document.querySelector(elemento).className = "";
         }else{
             return false;
         }
@@ -189,11 +189,11 @@ class Lodijs {//inizio classe Lodijs
     }//fine data_odierna
 
 
-    /*PARAMENTRO ID ELEMENTO NASCONDO ELEMENTO , EQUIVALE A HIDE DI JQUERY*/
-    nascondi(id){
-        //   if(id.length > 0){
+    /*PARAMENTRO elemento ELEMENTO NASCONDO ELEMENTO , EQUIVALE A HelementoE DI JQUERY*/
+    nascondi(elemento){
+        //   if(elemento.length > 0){
 
-        document.getElementById(id).style.display = 'none';
+        document.querySelector(elemento).style.display = 'none';
         //  }else{
         return false;
         //   }
@@ -202,22 +202,22 @@ class Lodijs {//inizio classe Lodijs
     }//fine metodo nascondi
 
 
-    /*PARAMETRO ID ELEMENTO MOSTRA ELEMENTO , EQUIVALE A SHOW DI JQUERY*/
-    mostra(id){
-        if(id.length > 0){
+    /*PARAMETRO elemento ELEMENTO MOSTRA ELEMENTO , EQUIVALE A SHOW DI JQUERY*/
+    mostra(elemento){
+        if(elemento.length > 0){
 
-            document.getElementById(id).style.display = '';
+            document.querySelector(elemento).style.display = '';
         }else{
             return false
         }
     }//fine metodo mostra
 
 
-    /*PARAMETRO ID ELEMENTO , SECONDO PARAMETRO STRINGA , INSERISCE PRIMA DELL'ELEMENTO LA STRINGA PASSATA COME PARAMETRO*/
-    appendi_prima(id,stringa){
-        if(id.length > 0 && stringa.length > 0){
+    /*PARAMETRO elemento ELEMENTO , SECONDO PARAMETRO STRINGA , INSERISCE PRIMA DELL'ELEMENTO LA STRINGA PASSATA COME PARAMETRO*/
+    appendi_prima(elemento,stringa){
+        if(elemento.length > 0 && stringa.length > 0){
 
-            document.getElementById(id).insertAdjacentHTML("beforebegin",stringa);
+            document.querySelector(elemento).insertAdjacentHTML("beforebegin",stringa);
 
         }else{
             return false;
@@ -229,10 +229,10 @@ class Lodijs {//inizio classe Lodijs
     }//fine metodo appendi prima
 
 
-    /*PARAMETRO ID ELEMENTO , SECONDO PARAMETRO STRINGA , INSERISCE DOPO L'ELEMENTO LA STRINGA PASSATA COME PARAMETRO*/
-    appendi_dopo(id,stringa){
-        if(id.length > 0 && stringa.length > 0){
-            document.getElementById(id).insertAdjacentHTML("afterend",stringa);
+    /*PARAMETRO elemento ELEMENTO , SECONDO PARAMETRO STRINGA , INSERISCE DOPO L'ELEMENTO LA STRINGA PASSATA COME PARAMETRO*/
+    appendi_dopo(elemento,stringa){
+        if(elemento.length > 0 && stringa.length > 0){
+            document.querySelector(elemento).insertAdjacentHTML("afterend",stringa);
         }else{
             return false;
         }
@@ -241,11 +241,11 @@ class Lodijs {//inizio classe Lodijs
     }//fine metodo appendi dopo
 
 
-    /*PARAMETRO ID ELEMENTO , CLONA L'ELEMENTO , EQUIVALE ALLA FUNZIONE CLONE DI JQUERY*/
-    clone(id){
+    /*PARAMETRO elemento ELEMENTO , CLONA L'ELEMENTO , EQUIVALE ALLA FUNZIONE CLONE DI JQUERY*/
+    clone(elemento){
 
-        if(id.length > 0) {
-            document.getElementById(id).cloneNode(true);
+        if(elemento.length > 0) {
+            document.querySelector(elemento).cloneNode(true);
         }else{
             return false;
         }
@@ -255,10 +255,10 @@ class Lodijs {//inizio classe Lodijs
     }//fine metodo clone
 
 
-    /*PARAMETRO ID ELEMENTO , SECONDO PARAMETRO ATTRIBUTO , AGGIUNGE ATTRIBUTO ALL'ELEMENTO , EQUIVALE A ATTR DI JQUERY*/
-    attr(id,attributo){
-        if(id.length > 0 && attributo.length > 0){
-            document.getElementById(id).getAttribute(attributo);
+    /*PARAMETRO elemento ELEMENTO , SECONDO PARAMETRO ATTRIBUTO , AGGIUNGE ATTRIBUTO ALL'ELEMENTO , EQUIVALE A ATTR DI JQUERY*/
+    attr(elemento,attributo){
+        if(elemento.length > 0 && attributo.length > 0){
+            document.querySelector(elemento).getAttribute(attributo);
         }else{
             return false;
         }
@@ -266,10 +266,10 @@ class Lodijs {//inizio classe Lodijs
 
     }//fine metodo attr
 
-    /*PARAMETRO ID ELEMENTO , SECONDO PARAMETRO TESTO , AGGIUNGE TESTO NORMALE ALL'ELEMENTO , EQUIVALE A TEXT DI JQUERY*/
-    testo(id,testo){
-        if(id.length > 0 && testo > 0){
-            document.getElementById(id).textContent(testo);
+    /*PARAMETRO elemento ELEMENTO , SECONDO PARAMETRO TESTO , AGGIUNGE TESTO NORMALE ALL'ELEMENTO , EQUIVALE A TEXT DI JQUERY*/
+    testo(elemento,testo){
+        if(elemento.length > 0 && testo > 0){
+            document.querySelector(elemento).textContent(testo);
         }else{
             return false;
         }
@@ -277,11 +277,11 @@ class Lodijs {//inizio classe Lodijs
     }//fine metodo testo
 
 
-    /*PARAMETRO ID ELEMENTO , SECONDO PARAMETRO STRINGA DA RIMPIAZZARE , EQUIVALE A REPLACEWITH DI JQUERY*/
-    rimpiazza(id,stringa){
-        if(id.length > 0){
+    /*PARAMETRO elemento ELEMENTO , SECONDO PARAMETRO STRINGA DA RIMPIAZZARE , EQUIVALE A REPLACEWITH DI JQUERY*/
+    rimpiazza(elemento,stringa){
+        if(elemento.length > 0){
 
-            document.getElementById(id).outerHTML = stringa;
+            document.querySelector(elemento).outerHTML = stringa;
 
 
         }else{
@@ -292,19 +292,19 @@ class Lodijs {//inizio classe Lodijs
     }//fine metodo rimpiazza
 
 
-    /*PARAMETRO ID ELEMENTO , RITORNA VALORE ELEMENTO EQUIVALE A VALUE DI JQUERY*/
-    valore(id,valore){
+    /*PARAMETRO elemento ELEMENTO , RITORNA VALORE ELEMENTO EQUIVALE A VALUE DI JQUERY*/
+    valore(elemento,valore){
 
-        if(id.length > 0 && valore == null){
+        if(elemento.length > 0 && valore == null){
 
-            //var valore =  document.getElementById(id).value;
-            var valore =  document.querySelector(id).value;
+            //var valore =  document.querySelector(elemento).value;
+            var valore =  document.querySelector(elemento).value;
             return valore;
 
         }
-        else if(id.length > 0 && valore.length > 0){
-           // document.getElementById(id).value = valore;
-            document.querySelector(id).value = valore;
+        else if(elemento.length > 0 && valore.length > 0){
+            // document.querySelector(elemento).value = valore;
+            document.querySelector(elemento).value = valore;
             return true;
         }
         else {
@@ -324,19 +324,19 @@ class Lodijs {//inizio classe Lodijs
     }//fine metodo operazioni
 
 
-    //PRIMO PARAMETRO ID ELEMENTO , SECONDO PARAMETRO FUNZIONE DI CALLBACK
-    mouseover(id,funzione){
+    //PRIMO PARAMETRO elemento ELEMENTO , SECONDO PARAMETRO FUNZIONE DI CALLBACK
+    mouseover(elemento,funzione){
 
-        var variabile = document.getElementById(id);
-            variabile.addEventListener("mouseover",funzione,false);
+        var variabile = document.querySelector(elemento);
+        variabile.addEventListener("mouseover",funzione,false);
     }//fine metodo mouseover
 
 
-    /*PRIMO PARAMETRO ID ELEMENTO , SECONDO PARAMETRO FUNZIONE DI CALLBACK*/
-    mouseout(id,funzione){
+    /*PRIMO PARAMETRO elemento ELEMENTO , SECONDO PARAMETRO FUNZIONE DI CALLBACK*/
+    mouseout(elemento,funzione){
 
-        var variabile = document.getElementById(id);
-            variabile.addEventListener("mouseout",funzione,false);
+        var variabile = document.querySelector(elemento);
+        variabile.addEventListener("mouseout",funzione,false);
 
     }//fine metodo mouseout
 
