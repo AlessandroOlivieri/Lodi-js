@@ -10,27 +10,27 @@ example :
 
     lodijs.pronto(function () {//inzio documento pronto
 
-        lodijs.nascondi('mostra');
+        lodijs.nascondi('#mostra');
 
 
-        lodijs.click('nascondi',function () {
+        lodijs.click('#nascondi',function () {
 
-            lodijs.del_class('testo');
-            lodijs.nascondi('div_nascosto');
-            lodijs.mostra('mostra');
-            lodijs.nascondi('nascondi');
-
-        });
-
-        lodijs.click('mostra',function () {
-
-            lodijs.mostra('div_nascosto');
-            lodijs.mostra('nascondi');
-            lodijs.nascondi('mostra');
+            lodijs.del_class('#testo');
+            lodijs.nascondi('#div_nascosto');
+            lodijs.mostra('#mostra');
+            lodijs.nascondi('#nascondi');
 
         });
 
-        lodijs.click('testo',function () {
+        lodijs.click('#mostra',function () {
+
+            lodijs.mostra('#div_nascosto');
+            lodijs.mostra('#nascondi');
+            lodijs.nascondi('#mostra');
+
+        });
+
+        lodijs.click('#testo',function () {
             lodijs.add_class('testo','colore');
         });
 
